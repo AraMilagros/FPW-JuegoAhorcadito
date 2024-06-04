@@ -56,3 +56,34 @@
 /* h2{
     border: 1px solid saddlebrown;
 } */
+/* @media (min-width: 768px) and (max-width: 1199.98px) { */
+@media (max-width: 768px) {
+
+    .contenedor1{
+        /* border:2px solid red; */
+        display: block;
+    }
+
+    .cont1{
+        /* border:2px solid blue; */
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .teclado{
+        /* border:2px solid green; */
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .teclado button{
+        padding: 0;
+    }
+
+    .repetir{
+        margin: 2em auto;
+    }
+}
+
