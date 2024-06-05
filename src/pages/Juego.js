@@ -49,20 +49,20 @@ export default function Juego() {
                 //se pasa a deshabilitar todo el teclado evitando que el usuario pueda clickear y ademas se reproduce un efecto
                 //de sonido que inidica que se perdio la partida, ademas de que se setea pista con la palabra generada para que 
                 //el usuario pueda ver cuál era la palabra que tenía que adivinar
-                
-                if(arrayPista.includes("_ ")){
+
+                if (arrayPista.includes("_ ")) {
                     deshabilitarTeclado();
                     setPista(palabra);
                     play(gameover);
                     setContador(7);
                 }
 
-            }else{
+            } else {
                 cont++;
                 setContador(cont);
                 play(error);
             }
-            
+
         }
 
         //Aqui recorremos el json para poder deshabilitar el btn que acaba de clickear en caso
@@ -85,9 +85,11 @@ export default function Juego() {
 
     //Aqui se asigna la palabra que el usuario tendra que adivinar
     useEffect(() => {
+       
         const json = Math.floor(Math.random() * palabras.length);//se genera el indice para traer x palabra del diccionario
         const palabraAzar = palabras[json];//se guarda el elemento de palabras.json
         arrayPalabra = Array.from(palabraAzar["Palabra"]);//la palabra que se guardo se lo guarda como array en ArrayPalabras
+        
         arrayPista = new Array(arrayPalabra.length).fill('_ ');//y ese array se utiliza para llenar arrayPista con guiones
         setPista(arrayPista.join(''));
         setPalabra(arrayPalabra.join(''));
@@ -96,6 +98,19 @@ export default function Juego() {
         setContador(cont);
         setJugar(false);
     }, [jugar]);
+
+    // consumir api para obtener palabras al azar
+    // function getApi() {
+    //     const urlApi = "https://clientes.api.greenborn.com.ar/public-random-word";
+
+    //     fetch(urlApi)
+    //         .then(res => res.json())
+    //         .then(response => {
+    //             console.log(response[0]);
+    //             return arrayPalabra = Array.from(response[0]);
+                
+    //         })
+    // }
 
     const habilitarTeclado = () => {
         for (let index = 0; index < abecedario.length; index++) {
